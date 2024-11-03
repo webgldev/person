@@ -1,0 +1,46 @@
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+main > section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  main > section {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main > section {
+    font-size: 1.2rem;
+  }
+}
+
+
+#section01 {
+  background-color: #000;
+}
+#section02 {
+  background-color: #111;
+}
+#section03 {
+  background-color: #222;
+}
+#section04 {
+  background-color: #333;
+}
+#section05 {
+  background-color: #444;
+}

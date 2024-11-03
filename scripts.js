@@ -7,9 +7,12 @@ import { section03 } from "./components/section03.js";
 import { section04 } from "./components/section04.js";
 import { section05 } from "./components/section05.js";
 
+import { setupScroll } from "./components/scrollParam.js";
+
 document.addEventListener('DOMContentLoaded', () => {
   header();
   footer();
+  setupScroll();
   
   section01();
   section02();
