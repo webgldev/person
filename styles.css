@@ -1,0 +1,11 @@
+@import "styles/reset.css";
+@import "styles/global.css";
+
+@import "styles/header.css";
+@import "styles/footer.css";
+
+@import "styles/section01.css";
+@import "styles/section02.css";
+@import "styles/section03.css";
+@import "styles/section04.css";
+@import "styles/section05.css";
