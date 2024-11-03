@@ -176,3 +176,7 @@ export default defineConfig({
   ],
 });
 ```
+
+## [5] public 리포에서 깃허브 페이지 설정
+1. 리포지토리 > Settings > Pages > Source > Branch > main > /(root) > Save
+2. Actions 탭에서 빌드 확인 및 배포 확인
