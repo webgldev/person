@@ -9,6 +9,8 @@ import { section05 } from "./components/section05.js";
 
 import { setupScroll } from "./components/scrollParam.js";
 
+import "./components/webgl.js";
+
 document.addEventListener('DOMContentLoaded', () => {
   header();
   footer();

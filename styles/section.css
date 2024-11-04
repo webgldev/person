@@ -1,7 +1,14 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 main {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  position: relative;
 }
 
 main > section {
@@ -28,19 +35,24 @@ main > section {
   }
 }
 
+#section01 {color: #1abc9c;}
+#section02 {color: #3498db;}
+#section03 {color: #9b59b6;}
+#section04 {color: #e74c3c;}
+#section05 {color: #f1c40f;}
 
-#section01 {
-  background-color: #000;
+#label01, #label02, #label03, #label04, #label05 {
+  opacity: 0;
+  transition: opacity 1s ease; 
+  position: absolute; 
+  top: 45%; 
+  left: 50%;
+  transform: translate(-50%, -50%);  
 }
-#section02 {
-  background-color: #111;
-}
-#section03 {
-  background-color: #222;
-}
-#section04 {
-  background-color: #333;
-}
-#section05 {
-  background-color: #444;
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
