@@ -202,3 +202,16 @@ export default defineConfig({
 ## [6] WebGL 추가
 - 설치 : `pnpm add three gsap`
 
+
+
+
+
+
+
+### 참고 사항
+- [scroll-snap-type](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type)
+- [GSAP ScrollTrigger](https://greensock.com/docs/v3/Plugins/ScrollTrigger)
+- [Post (ScrollTrigger and Threejs)](https://gsap.com/community/forums/topic/25016-scrolltrigger-and-threejs/)
+- [Docs Example (threejs curve)](https://threejs.org/examples/?q=curve#webgl_modifier_curve)
+
+
