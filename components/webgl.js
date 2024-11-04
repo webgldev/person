@@ -4,8 +4,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// 개발 모드 플래그 설정
-const isDevelopment = false; // 배포 시 false로 변경하세요.
+// 개발 모드
+const isDevelopment = false;
 
 // GSAP 플러그인 등록
 gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +23,7 @@ camera.lookAt(new THREE.Vector3(0, 10, 0));
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('main').appendChild(renderer.domElement); // #main에 추가
+document.getElementById('main').appendChild(renderer.domElement); // #main 에 canvas 추가
 
 // 조명 추가
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
@@ -73,7 +73,7 @@ const scaleValues = sections.map(section => section.scale);
 
 // GLTFLoader를 사용해 GLB 모델 불러오기
 let model;
-let boundingBox; // 박스를 전역 변수로 선언
+let boundingBox;
 const loader = new GLTFLoader();
 loader.load(
   'aesop_cosmetic.glb',
@@ -92,13 +92,13 @@ loader.load(
 
     // 박스 생성 및 추가 (개발 모드일 때만)
     if (isDevelopment) {
-      const boxGeometry = new THREE.BoxGeometry(boxSize.x, boxSize.y, boxSize.z); // 박스 크기 설정
-      const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true }); // 박스 재질 설정
+      const boxGeometry = new THREE.BoxGeometry(boxSize.x, boxSize.y, boxSize.z);
+      const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
       boundingBox = new THREE.Mesh(boxGeometry, boxMaterial);
       
       // 박스 위치를 모델의 중앙으로 설정
       boundingBox.position.copy(box.getCenter(new THREE.Vector3()));
-      scene.add(boundingBox); // 씬에 박스 추가
+      scene.add(boundingBox);
 
       console.log('개발 모드: boundingBox가 추가되었습니다.');
     }
@@ -119,22 +119,21 @@ loader.load(
   }
 );
 
-// ScrollTrigger 설정 함수
+// ScrollTrigger 설정
 function setupScrollTriggers() {
   console.log('ScrollTriggers 설정 시작');
 
   // 각 섹션마다 ScrollTrigger 생성
   curvePoints.forEach((point, index) => {
-    if (index === 0) return; // 첫 번째 점은 초기 위치이므로 건너뜁니다.
+    if (index === 0) return;
 
-    // 해당 섹션의 라벨 ID 설정
     const labelId = `#label0${index + 1}`;
 
     ScrollTrigger.create({
-      trigger: `#section0${index + 1}`, // 예: #section02, #section03, ...
-      scroller: '#main',               // 스크롤 컨테이너 지정
-      start: 'top center',             // 섹션이 중앙에 도달할 때 애니메이션 시작
-      end: 'bottom center',            // 섹션이 중앙을 떠날 때 애니메이션 끝
+      trigger: `#section0${index + 1}`,
+      scroller: '#main',              
+      start: 'top center',            
+      end: 'bottom center',           
       onEnter: () => {
         gsap.to(model.position, {
           x: point.x,
@@ -213,7 +212,7 @@ function setupScrollTriggers() {
           ease: 'power1.out'
         });
       },
-      markers: isDevelopment // 개발 모드일 때만 마커 표시
+      markers: isDevelopment
     });
   });
 

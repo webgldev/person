@@ -1,16 +1,4 @@
-## 스크롤 애니메이션 적용 순서
-
-1. 섹션을 웹 컴포넌트로 분기 후 CSS로 스크롤 적용
-2. 섹션에 파라미터 적용 후 url 업데이트
-  - 메뉴 클릭 시 섹션으로 스크롤 이동
-  - 스크롤로 섹션 이동 시 url 업데이트
-  - 브라우저 새로고침 시 해당 섹션으로 스크롤 이동
-  - 섹션 url로 직접 접속 시 해당 섹션으로 스크롤 이동
-3. 3D 공간 추가 후 glb, 라이팅, 카메라 적용
-4. glb가 움직일 위치 설정 (커브, 점, 모델 박스 영역을 디버깅으로 설정)
-5. 각 섹션별로 스크롤 시 glb의 포지션, 회전, 스케일 설정
-6. 각 섹션별로 스크롤 시 라벨 표시 설정
-
+## threejs + gsap + vite
 
 ***
 
@@ -68,14 +56,17 @@ public/
 ***
 
 ## [2] 깃허브 리포 만들고 로컬에 연결
+  ```
+  git init
+  git remote add origin 리포주소
+  ```
 
 ***
 
 ## [3] 깃허브 페이지 배포
 - private 에서 actions로 빌드하고 public 리포지토리에 배포
   ```
-
-  1. 조직에서 토큰 활성화 (한번만 활성화하면 됨)
+  1. 조직에서 토큰 활성화 (한번만 활성화)
   organization > Settings > Personal access tokens > continue ~ done
 
   2. 개인 프로필에 토큰 발급
@@ -157,7 +148,7 @@ export default defineConfig({
 
   base: '/scroll/', // GitHub Pages의 리포지토리 이름에 맞게 base 경로 설정
   build: {
-    minify: 'terser', // 자바스크립트 및 CSS 압축
+    minify: 'terser', // JS, CSS 압축
     terserOptions: {
       compress: {
         drop_console: true,  // console.log 제거
@@ -168,9 +159,10 @@ export default defineConfig({
   },
   plugins: [
     createHtmlPlugin({
-      minify: true,
+      minify: true, // 기본 html 압축
     }),
     {
+      // 404 페이지 복사 및 압축
       name: 'copy-and-minify-404-html',
       closeBundle: async () => {
         const distDir = resolve(__dirname, 'dist');
@@ -194,16 +186,29 @@ export default defineConfig({
 ```
 
 ## [5] public 리포에서 깃허브 페이지 설정
-1. 리포지토리 > Settings > Pages > Source > Branch > main > /(root) > Save
-2. Actions 탭에서 빌드 확인 및 배포 확인
+  ```
+  1. 배포 받을 리포지토리 > Settings > Pages > Source > Branch > main > /(root) > Save
+  2. Actions 탭에서 빌드 확인 및 배포 확인
+  3. 배포 주소로 접속해서 확인
+  ```
 
 
+## [6] WebGL 및 스크롤 애니메이션 추가
+  ```
+  ## 스크롤 애니메이션 적용 순서
 
-## [6] WebGL 추가
+  1. 섹션을 웹 컴포넌트로 분기 후 CSS로 스크롤 적용
+  2. 섹션에 파라미터 적용 후 url 업데이트
+    - 메뉴 클릭 시 섹션으로 스크롤 이동
+    - 스크롤로 섹션 이동 시 url 업데이트
+    - 브라우저 새로고침 시 해당 섹션으로 스크롤 이동
+    - 섹션 url로 직접 접속 시 해당 섹션으로 스크롤 이동
+  3. 3D 공간 추가 후 glb, 라이팅, 카메라 적용
+  4. glb가 움직일 위치 설정 (커브, 점, 모델 박스 영역을 디버깅으로 설정)
+  5. 각 섹션별로 스크롤 시 glb의 포지션, 회전, 스케일 설정
+  6. 각 섹션별로 스크롤 시 라벨 표시 설정
+  ```
 - 설치 : `pnpm add three gsap`
-
-
-
 
 
 
